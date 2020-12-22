@@ -8,13 +8,15 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
+
 @XmlRootElement
 public class TruckSubcategory implements Subcategory {
+    @XmlElement
+    private String name;
     @XmlElements({
             @XmlElement(type = SimpleProduct.class)
     })
     private final List<Product> products = new ArrayList<>();
-    private String name;
 
     public TruckSubcategory(String name) {
         this.name = name;

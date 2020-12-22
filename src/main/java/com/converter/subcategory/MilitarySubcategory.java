@@ -11,11 +11,13 @@ import java.util.List;
 
 @XmlRootElement
 public class MilitarySubcategory implements Subcategory {
+    @XmlElement
+    private String name;
     @XmlElements({
             @XmlElement(type = SimpleProduct.class)
     })
     private final List<Product> products = new ArrayList<>();
-    private String name;
+
 
     public MilitarySubcategory(String name) {
         this.name = name;
@@ -26,12 +28,12 @@ public class MilitarySubcategory implements Subcategory {
 
     @Override
     public void addProduct(Product product) {
-
+        products.add(product);
     }
 
     @Override
     public List<Product> getProducts() {
-        return null;
+        return products;
     }
 
     @Override

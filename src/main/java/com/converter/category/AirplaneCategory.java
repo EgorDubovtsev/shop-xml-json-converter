@@ -9,15 +9,16 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
+
 @XmlRootElement
 public class AirplaneCategory implements Category {
+    @XmlElement
+    private String name;
     @XmlElements({
             @XmlElement(type = MilitarySubcategory.class),
             @XmlElement(type = CivilSubcategory.class)
     })
     private final List<Subcategory> subcategories = new ArrayList<>();
-    @XmlElement
-    private String name;
 
     public AirplaneCategory() {
     }

@@ -9,14 +9,16 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
+
 @XmlRootElement
 public class CarCategory implements Category {
+    @XmlElement
+    private String name;
     @XmlElements({
             @XmlElement(type = TruckSubcategory.class),
             @XmlElement(type = RacingSubcategory.class)
     })
     private final List<Subcategory> subcategories = new ArrayList<>();
-    private String name;
 
     public CarCategory(String name) {
         this.name = name;

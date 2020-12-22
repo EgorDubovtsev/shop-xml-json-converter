@@ -1,10 +1,14 @@
 package com.converter.entity;
 
+import com.converter.LocalDateAdapter;
+
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 public class SimpleProduct implements Product {
     private String maker;
     private String model;
+//    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate creationDate;
     private double price;
     private boolean isInStock;

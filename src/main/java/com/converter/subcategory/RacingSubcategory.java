@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 @XmlRootElement
 public class RacingSubcategory implements Subcategory {
+    @XmlElement
+    private String name;
+
     @XmlElements({
             @XmlElement(type = SimpleProduct.class)
     })
     private final List<Product> products = new ArrayList<>();
-    private String name;
 
     public RacingSubcategory(String name) {
         this.name = name;

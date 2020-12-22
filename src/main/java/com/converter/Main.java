@@ -59,8 +59,8 @@ public class Main {
         truckSubcategory.addProduct(car2);
 
         Category airplaneCategory = new AirplaneCategory("airplane");
-        airplaneCategory.addSubcategory(civilSubcategory);
         airplaneCategory.addSubcategory(militarySubcategory);
+        airplaneCategory.addSubcategory(civilSubcategory);
 
         Category carCategory = new CarCategory("car");
         carCategory.addSubcategory(racingSubcategory);
