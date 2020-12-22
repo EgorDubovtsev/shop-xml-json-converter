@@ -12,7 +12,7 @@ import com.converter.subcategory.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -74,8 +74,21 @@ public class Main {
 
         JAXBContext context = JAXBContext.newInstance(SimpleShop.class);
         Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
-        marshaller.marshal(shop,stringWriter);
-        System.out.println(stringWriter.toString());
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        File file = new File("shop.xml");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try (
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))
+        ) {
+            marshaller.marshal(shop, bufferedWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

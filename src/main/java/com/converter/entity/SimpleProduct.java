@@ -2,13 +2,18 @@ package com.converter.entity;
 
 import com.converter.LocalDateAdapter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SimpleProduct implements Product {
     private String maker;
     private String model;
-//    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate creationDate;
     private double price;
     private boolean isInStock;
@@ -35,7 +40,7 @@ public class SimpleProduct implements Product {
 
     @Override
     public LocalDate getCreationDate() {
-        return creationDate;
+        return this.creationDate;
     }
 
     @Override
