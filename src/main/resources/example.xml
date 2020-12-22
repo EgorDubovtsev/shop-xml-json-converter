@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<shop>
+    <categories>
+        <category>
+            <name>First Category</name>
+            <subcategories>
+                <subcategory>
+                    <name>Subcategory 1</name>
+                    <products>
+                        <product>
+                            <maker>MAKER 1</maker>
+                            <model>rr111</model>
+                            <creationDate>31-11-2000</creationDate>
+                            <color>RED</color>
+                            <price>20.1</price>
+                            <isInStock>true</isInStock>
+                        </product>
+                    </products>
+                </subcategory>
+                <subcategory>
+                    <name>Subcategory 2</name>
+                    <products>
+                        <product>
+                            <maker>MAKER 4</maker>
+                            <model>uu111</model>
+                            <creationDate>31-11-2000</creationDate>
+                            <color>RED</color>
+                            <price>20.1</price>
+                            <isInStock>false</isInStock>
+                        </product>
+                    </products>
+                </subcategory>
+            </subcategories>
+        </category>
+        <category>
+            <name>Second Category</name>
+            <subcategories>
+                <subcategory>
+                    <name>Subcategory 3</name>
+                    <products>
+                        <product>
+                            <maker>MAKER 7</maker>
+                            <model>rr111</model>
+                            <creationDate>31-11-2000</creationDate>
+                            <color>BLACK</color>
+                            <price>20.1</price>
+                            <isInStock>true</isInStock>
+                        </product>
+                    </products>
+                </subcategory>
+                <subcategory>
+                    <name>Subcategory 4</name>
+                    <products>
+                        <product>
+                            <maker>MAKER 8</maker>
+                            <model>uu111</model>
+                            <creationDate>31-11-2000</creationDate>
+                            <color>BLACK</color>
+                            <price>20.1</price>
+                            <isInStock>false</isInStock>
+                        </product>
+                    </products>
+                </subcategory>
+            </subcategories>
+        </category>
+    </categories>
+</shop>

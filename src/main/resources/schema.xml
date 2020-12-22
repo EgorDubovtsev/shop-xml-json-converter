@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="shop">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="categoryName" type="xs:string"/>
+                            <xs:element name="subcategory">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="subcategoryName" type="xs:string"/>
+                                        <xs:element name="product">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="maker" type="xs:string"/>
+                                                    <xs:element name="model" type="xs:string"/>
+                                                    <xs:element name="creationDate" type="xs:date"/>
+                                                    <xs:element name="color">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:enumeration value="RED"/>
+                                                                <xs:enumeration value="BLACK"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="price" type="xs:double"/>
+                                                    <xs:element name="isInStock" type="xs:boolean"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
