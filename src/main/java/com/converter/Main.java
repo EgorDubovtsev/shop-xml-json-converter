@@ -27,6 +27,7 @@ public class Main {
         car1.setPrice(2000.5);
         car1.setInStock(true);
         car1.setColor(Color.BLACK);
+        car1.setTest("Attribute value");
 
         Product car2 = new SimpleProduct();
         car2.setMaker("MERCEDES");
@@ -35,6 +36,7 @@ public class Main {
         car2.setPrice(4000);
         car2.setInStock(false);
         car2.setColor(Color.RED);
+        car2.setTest("Attribute value4");
 
 
         Product airplane1 = new SimpleProduct();
@@ -44,6 +46,7 @@ public class Main {
         airplane1.setPrice(2000.5);
         airplane1.setInStock(true);
         airplane1.setColor(Color.BLACK);
+        airplane1.setTest("Attribute value3");
 
 
         Product airplane2 = new SimpleProduct();
@@ -53,6 +56,7 @@ public class Main {
         airplane2.setPrice(2000.5);
         airplane2.setInStock(false);
         airplane2.setColor(Color.BLACK);
+        airplane2.setTest("Attribute value2");
 
 
         Subcategory civilSubcategory = new SimpleSubcategory("civil airplane");
@@ -88,7 +92,6 @@ public class Main {
         System.out.println(readerXml.readXml(xmlFile, SimpleShop.class));
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         JsonConverter<SimpleShop> simpleShopJsonConverter = new SimpleJsonConverter<>(objectMapper, readerXml);
         File jsonFile = new File("shop.json");
         try {

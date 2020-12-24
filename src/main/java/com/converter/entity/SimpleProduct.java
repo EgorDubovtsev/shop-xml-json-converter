@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
@@ -25,6 +26,8 @@ public class SimpleProduct implements Product {
     private double price;
     private boolean isInStock;
     private Color color;
+    @XmlAttribute(name = "test")
+    private String test;
 
     public SimpleProduct() {
     }
@@ -52,6 +55,16 @@ public class SimpleProduct implements Product {
     @Override
     public LocalDate getCreationDate() {
         return this.creationDate;
+    }
+
+    @Override
+    public String getTest() {
+        return test;
+    }
+
+    @Override
+    public void setTest(String test) {
+        this.test = test;
     }
 
     @Override

@@ -30,4 +30,9 @@ public interface Product {
     Color getColor();
 
     void setColor(Color color);
+
+    String getTest();
+
+    void setTest(String test);
+
 }

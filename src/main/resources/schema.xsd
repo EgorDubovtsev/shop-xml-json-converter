@@ -11,7 +11,7 @@
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="name" type="xs:string"/>
-                                        <xs:element name="products">
+                                        <xs:element name="products" >
                                             <xs:complexType>
                                                 <xs:sequence>
                                                     <xs:element name="maker" type="xs:string"/>
@@ -28,6 +28,7 @@
                                                         </xs:simpleType>
                                                     </xs:element>
                                                 </xs:sequence>
+                                                <xs:attribute name="test" type="xs:string"/>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
