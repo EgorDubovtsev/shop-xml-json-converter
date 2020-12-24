@@ -88,8 +88,6 @@ public class Main {
         System.out.println(readerXml.readXml(xmlFile, SimpleShop.class));
 
         ObjectMapper objectMapper = new ObjectMapper();
-//        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-//        objectMapper.setDateFormat(dateFormat);
 
         JsonConverter<SimpleShop> simpleShopJsonConverter = new SimpleJsonConverter<>(objectMapper, readerXml);
         File jsonFile = new File("shop.json");
@@ -101,10 +99,11 @@ public class Main {
 
         File convertedShop = new File("convertedShop.xml");
         try {
-            simpleShopJsonConverter.convertToXml(jsonFile,convertedShop,SimpleShop.class,generatorXml);
+            simpleShopJsonConverter.convertToXml(jsonFile, convertedShop, SimpleShop.class, generatorXml);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        XmlValidator xmlValidator = new XmlValidator();
+        xmlValidator.checkValidation(xmlFile, new File("src/main/resources/schema.xsd"));
     }
 }
