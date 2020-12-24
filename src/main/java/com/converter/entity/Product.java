@@ -1,9 +1,10 @@
 package com.converter.entity;
 
-import com.converter.category.SimpleCategory;
+import com.converter.utils.Color;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDate;
+
 @JsonDeserialize(as = SimpleProduct.class)
 public interface Product {
     String getMaker();
@@ -25,4 +26,8 @@ public interface Product {
     boolean isInStock();
 
     void setInStock(boolean inStock);
+
+    Color getColor();
+
+    void setColor(Color color);
 }

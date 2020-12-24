@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class SimpleJsonConverter<T> implements JsonConverter<T> {
     private ObjectMapper objectMapper;
@@ -18,6 +19,7 @@ public class SimpleJsonConverter<T> implements JsonConverter<T> {
 
     @Override
     public void convertToJson(File xmlFile, File jsonFile, Class<T> classForConvert) throws IOException {
+        objectMapper.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
         objectMapper.writeValue(jsonFile, readerXml.readXml(xmlFile, classForConvert));
     }
 

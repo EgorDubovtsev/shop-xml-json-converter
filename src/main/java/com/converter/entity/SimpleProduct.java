@@ -1,9 +1,11 @@
 package com.converter.entity;
 
-import com.converter.LocalDateAdapter;
-import com.converter.service.LocalDateHandler;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.converter.service.LocalDateAdapter;
+import com.converter.service.LocalDateDeserializer;
+import com.converter.service.LocalDateSerializer;
+import com.converter.utils.Color;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,10 +19,15 @@ public class SimpleProduct implements Product {
     private String maker;
     private String model;
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
-    @JsonDeserialize(using = LocalDateHandler.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate creationDate;
     private double price;
     private boolean isInStock;
+    private Color color;
+
+    public SimpleProduct() {
+    }
 
     @Override
     public String getMaker() {
@@ -45,6 +52,16 @@ public class SimpleProduct implements Product {
     @Override
     public LocalDate getCreationDate() {
         return this.creationDate;
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
+    }
+
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     @Override
@@ -80,6 +97,7 @@ public class SimpleProduct implements Product {
                 ", creationDate=" + creationDate +
                 ", price=" + price +
                 ", isInStock=" + isInStock +
+                ", color=" + color +
                 '}';
     }
 }

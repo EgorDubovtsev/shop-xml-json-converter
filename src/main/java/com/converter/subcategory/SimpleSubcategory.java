@@ -35,10 +35,10 @@ public class SimpleSubcategory implements Subcategory {
         return products;
     }
 
-//    @Override
-//    public String getSubcategoryName() {
-//        return name;
-//    }
+    @Override
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {

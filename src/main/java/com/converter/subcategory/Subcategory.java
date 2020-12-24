@@ -11,5 +11,5 @@ public interface Subcategory {
 
     List<Product> getProducts();
 
-//    String getSubcategoryName();
+     String getName();
 }

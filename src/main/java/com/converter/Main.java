@@ -8,6 +8,7 @@ import com.converter.service.*;
 import com.converter.shop.Shop;
 import com.converter.shop.SimpleShop;
 import com.converter.subcategory.*;
+import com.converter.utils.Color;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.xml.bind.*;
@@ -25,6 +26,7 @@ public class Main {
         car1.setCreationDate(LocalDate.of(2006, Month.APRIL, 21));
         car1.setPrice(2000.5);
         car1.setInStock(true);
+        car1.setColor(Color.BLACK);
 
         Product car2 = new SimpleProduct();
         car2.setMaker("MERCEDES");
@@ -32,6 +34,8 @@ public class Main {
         car2.setCreationDate(LocalDate.of(2002, Month.JANUARY, 14));
         car2.setPrice(4000);
         car2.setInStock(false);
+        car2.setColor(Color.RED);
+
 
         Product airplane1 = new SimpleProduct();
         airplane1.setMaker("GOVERNMENT");
@@ -39,6 +43,8 @@ public class Main {
         airplane1.setCreationDate(LocalDate.of(2006, Month.APRIL, 21));
         airplane1.setPrice(2000.5);
         airplane1.setInStock(true);
+        airplane1.setColor(Color.BLACK);
+
 
         Product airplane2 = new SimpleProduct();
         airplane2.setMaker("YOUNG COMPANY");
@@ -46,6 +52,8 @@ public class Main {
         airplane2.setCreationDate(LocalDate.of(2006, Month.APRIL, 21));
         airplane2.setPrice(2000.5);
         airplane2.setInStock(false);
+        airplane2.setColor(Color.BLACK);
+
 
         Subcategory civilSubcategory = new SimpleSubcategory("civil airplane");
         civilSubcategory.addProduct(airplane2);
