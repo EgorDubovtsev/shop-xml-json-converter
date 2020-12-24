@@ -1,18 +1,19 @@
 package com.converter;
 
-import com.converter.category.AirplaneCategory;
-import com.converter.category.CarCategory;
 import com.converter.category.Category;
+import com.converter.category.SimpleCategory;
 import com.converter.entity.Product;
 import com.converter.entity.SimpleProduct;
+import com.converter.service.*;
 import com.converter.shop.Shop;
 import com.converter.shop.SimpleShop;
 import com.converter.subcategory.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import javax.xml.bind.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -46,23 +47,23 @@ public class Main {
         airplane2.setPrice(2000.5);
         airplane2.setInStock(false);
 
-        Subcategory civilSubcategory = new CivilSubcategory("civil_airplane");
+        Subcategory civilSubcategory = new SimpleSubcategory("civil airplane");
         civilSubcategory.addProduct(airplane2);
 
-        Subcategory militarySubcategory = new MilitarySubcategory("military_airplane");
+        Subcategory militarySubcategory = new SimpleSubcategory("military airplane");
         militarySubcategory.addProduct(airplane1);
 
-        Subcategory racingSubcategory = new RacingSubcategory("racing_car");
+        Subcategory racingSubcategory = new SimpleSubcategory("racing car");
         racingSubcategory.addProduct(car1);
 
-        Subcategory truckSubcategory = new TruckSubcategory("truck_car");
+        Subcategory truckSubcategory = new SimpleSubcategory("truck car");
         truckSubcategory.addProduct(car2);
 
-        Category airplaneCategory = new AirplaneCategory("airplane");
+        Category airplaneCategory = new SimpleCategory("airplane");
         airplaneCategory.addSubcategory(militarySubcategory);
         airplaneCategory.addSubcategory(civilSubcategory);
 
-        Category carCategory = new CarCategory("car");
+        Category carCategory = new SimpleCategory("car");
         carCategory.addSubcategory(racingSubcategory);
         carCategory.addSubcategory(truckSubcategory);
 
@@ -70,25 +71,32 @@ public class Main {
         shop.addCategory(airplaneCategory);
         shop.addCategory(carCategory);
 
-        StringWriter stringWriter = new StringWriter();
+        File xmlFile = new File("shop.xml");
 
-        JAXBContext context = JAXBContext.newInstance(SimpleShop.class);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        File file = new File("shop.xml");
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        try (
-                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))
-        ) {
-            marshaller.marshal(shop, bufferedWriter);
+        GeneratorXml generatorXml = new SimpleGeneratorXml();
+        generatorXml.generateXmlStAX(shop, xmlFile);
+
+        ReaderXml<SimpleShop> readerXml = new SimpleReaderXml<>();
+        System.out.println(readerXml.readXml(xmlFile, SimpleShop.class));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+//        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        objectMapper.setDateFormat(dateFormat);
+
+        JsonConverter<SimpleShop> simpleShopJsonConverter = new SimpleJsonConverter<>(objectMapper, readerXml);
+        File jsonFile = new File("shop.json");
+        try {
+            simpleShopJsonConverter.convertToJson(xmlFile, jsonFile, SimpleShop.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        File convertedShop = new File("convertedShop.xml");
+        try {
+            simpleShopJsonConverter.convertToXml(jsonFile,convertedShop,SimpleShop.class,generatorXml);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

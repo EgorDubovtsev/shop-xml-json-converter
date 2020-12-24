@@ -3,27 +3,26 @@ package com.converter.subcategory;
 import com.converter.entity.Product;
 import com.converter.entity.SimpleProduct;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-public class MilitarySubcategory implements Subcategory {
+public class SimpleSubcategory implements Subcategory {
     @XmlElement
     private String name;
-    @XmlElements({
-            @XmlElement(type = SimpleProduct.class)
-    })
+    @XmlElement(type = SimpleProduct.class)
     private final List<Product> products = new ArrayList<>();
 
-
-    public MilitarySubcategory(String name) {
-        this.name = name;
+    public SimpleSubcategory() {
     }
 
-    public MilitarySubcategory() {
+    public SimpleSubcategory(String name) {
+        this.name = name;
     }
 
     @Override
@@ -36,8 +35,16 @@ public class MilitarySubcategory implements Subcategory {
         return products;
     }
 
+//    @Override
+//    public String getSubcategoryName() {
+//        return name;
+//    }
+
     @Override
-    public String getSubcategoryName() {
-        return name;
+    public String toString() {
+        return "SimpleSubcategory{" +
+                "name='" + name + '\'' +
+                ", products=" + products +
+                '}';
     }
 }

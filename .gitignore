@@ -1,3 +1,5 @@
 .idea
 target
 shop.xml
+shop.json
+convertedShop.xml

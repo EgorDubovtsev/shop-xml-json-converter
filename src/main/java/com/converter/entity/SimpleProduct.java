@@ -1,6 +1,9 @@
 package com.converter.entity;
 
 import com.converter.LocalDateAdapter;
+import com.converter.service.LocalDateHandler;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,6 +17,7 @@ public class SimpleProduct implements Product {
     private String maker;
     private String model;
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+    @JsonDeserialize(using = LocalDateHandler.class)
     private LocalDate creationDate;
     private double price;
     private boolean isInStock;
@@ -66,5 +70,16 @@ public class SimpleProduct implements Product {
     @Override
     public void setInStock(boolean inStock) {
         isInStock = inStock;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleProduct{" +
+                "maker='" + maker + '\'' +
+                ", model='" + model + '\'' +
+                ", creationDate=" + creationDate +
+                ", price=" + price +
+                ", isInStock=" + isInStock +
+                '}';
     }
 }

@@ -1,7 +1,10 @@
 package com.converter.entity;
 
-import java.time.LocalDate;
+import com.converter.category.SimpleCategory;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.time.LocalDate;
+@JsonDeserialize(as = SimpleProduct.class)
 public interface Product {
     String getMaker();
 
