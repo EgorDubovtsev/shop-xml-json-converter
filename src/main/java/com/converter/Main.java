@@ -13,8 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.xml.bind.*;
 import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -86,7 +84,7 @@ public class Main {
         File xmlFile = new File("shop.xml");
 
         GeneratorXml generatorXml = new SimpleGeneratorXml();
-        generatorXml.generateXmlStAX(shop, xmlFile);
+        generatorXml.generateXmlJAXB(shop, xmlFile);
 
         ReaderXml<SimpleShop> readerXml = new SimpleReaderXml<>();
         System.out.println(readerXml.readXml(xmlFile, SimpleShop.class));

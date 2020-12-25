@@ -13,11 +13,10 @@ import java.io.IOException;
 public class SimpleGeneratorXml implements  GeneratorXml {
 
     @Override
-    public void generateXmlStAX(Object object, File file) throws JAXBException {
+    public void generateXmlJAXB(Object object, File file) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(SimpleShop.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
 
         try (
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))
