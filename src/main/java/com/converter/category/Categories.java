@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
 
 @JsonDeserialize(as = SimpleCategory.class)
-public interface Category {
+public interface Categories {
     void addSubcategory(Subcategory subcategory);
 
     List<Subcategory> getSubcategories();

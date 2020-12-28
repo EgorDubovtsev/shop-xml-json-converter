@@ -12,7 +12,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-public class SimpleCategory implements Category {
+public class SimpleCategory implements Categories {
     @XmlElement
     private String name;
     @XmlElement(type = SimpleSubcategory.class)
