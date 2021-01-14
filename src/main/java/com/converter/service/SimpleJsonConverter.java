@@ -26,6 +26,6 @@ public class SimpleJsonConverter<T> implements JsonConverter<T> {
     @Override
     public void convertToXml(File jsonFile, File fileForConvert, Class<T> classForConvert, GeneratorXml generatorXml) throws IOException, JAXBException {
         T convertedClass = objectMapper.readValue(jsonFile, classForConvert);
-        generatorXml.generateXmlJAXB(convertedClass, fileForConvert);
+        generatorXml.generateXmlJAXB(convertedClass, fileForConvert,classForConvert);
     }
 }

@@ -9,11 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
-public class SimpleShop implements Shop {
+public class SimpleShop {
     @XmlElement(type = SimpleCategory.class)
     private final List<Category> categories = new ArrayList<>();
 
-    @Override
     public void addCategory(Category category) {
         categories.add(category);
     }
@@ -21,7 +20,6 @@ public class SimpleShop implements Shop {
     public SimpleShop() {
     }
 
-    @Override
     public List<Category> getCategories() {
         return categories;
     }

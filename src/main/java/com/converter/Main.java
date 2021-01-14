@@ -5,7 +5,6 @@ import com.converter.category.SimpleCategory;
 import com.converter.entity.Product;
 import com.converter.entity.SimpleProduct;
 import com.converter.service.*;
-import com.converter.shop.Shop;
 import com.converter.shop.SimpleShop;
 import com.converter.subcategory.*;
 import com.converter.utils.Color;
@@ -77,14 +76,14 @@ public class Main {
         carCategory.addSubcategory(racingSubcategory);
         carCategory.addSubcategory(truckSubcategory);
 
-        Shop shop = new SimpleShop();
+        SimpleShop shop = new SimpleShop();
         shop.addCategory(airplaneCategory);
         shop.addCategory(carCategory);
 
         File xmlFile = new File("shop.xml");
 
-        GeneratorXml generatorXml = new SimpleGeneratorXml();
-        generatorXml.generateXmlJAXB(shop, xmlFile);
+        GeneratorXml<SimpleShop> generatorXml = new SimpleGeneratorXml<>();
+        generatorXml.generateXmlJAXB(shop, xmlFile,SimpleShop.class);
 
         ReaderXml<SimpleShop> readerXml = new SimpleReaderXml<>();
         System.out.println(readerXml.readXml(xmlFile, SimpleShop.class));

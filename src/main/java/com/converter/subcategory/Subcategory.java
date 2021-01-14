@@ -1,6 +1,5 @@
 package com.converter.subcategory;
 
-import com.converter.category.SimpleCategory;
 import com.converter.entity.Product;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
