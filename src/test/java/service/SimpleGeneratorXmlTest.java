@@ -1,3 +1,5 @@
+package service;
+
 import com.converter.category.Category;
 import com.converter.category.SimpleCategory;
 import com.converter.entity.Product;
@@ -8,10 +10,8 @@ import com.converter.subcategory.SimpleSubcategory;
 import com.converter.subcategory.Subcategory;
 import com.converter.utils.Color;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 
 import javax.xml.bind.JAXBException;
 import java.io.*;
@@ -22,12 +22,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 class SimpleGeneratorXmlTest {
-
+    private static final String PATH_TEST_RESOURCES = "src/test/resources";
     private SimpleGeneratorXml<SimpleShop> simpleGeneratorXml = new SimpleGeneratorXml<>();
-    private final File FILE_FOR_XML_GENERATE_TESTING = new File("src/test/resources/fileForXmlGenerationTesting.xml");
+    private final File FILE_FOR_XML_GENERATE_TESTING = new File(PATH_TEST_RESOURCES + "/fileToXmlGenerate.xml");
     private static SimpleShop simpleEmptyShop = new SimpleShop();
     private static SimpleShop simpleShopFull = new SimpleShop();
-
 
 
     @BeforeAll
@@ -78,7 +77,7 @@ class SimpleGeneratorXmlTest {
 
     @Test
     @DisplayName("Геренация файла из Shop без категорий")
-     void thatXmlWillBeCorrectGeneratedWithoutCategories() throws IOException {
+    void thatXmlWillBeCorrectGeneratedWithoutCategories() throws IOException {
         File xmlShopWithoutCategories = new File("src/test/resources/shopWithoutCategories.xml");
 
         try (
@@ -112,7 +111,6 @@ class SimpleGeneratorXmlTest {
         } catch (JAXBException | IOException e) {
             e.printStackTrace();
         }
-
-
     }
+
 }

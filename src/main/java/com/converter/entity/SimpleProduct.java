@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -112,5 +113,36 @@ public class SimpleProduct implements Product {
                 ", isInStock=" + isInStock +
                 ", color=" + color +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SimpleProduct that = (SimpleProduct) o;
+
+        if (Double.compare(that.price, price) != 0) return false;
+        if (isInStock != that.isInStock) return false;
+        if (!Objects.equals(maker, that.maker)) return false;
+        if (!Objects.equals(model, that.model)) return false;
+        if (!Objects.equals(creationDate, that.creationDate)) return false;
+        if (color != that.color) return false;
+        return Objects.equals(test, that.test);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = maker != null ? maker.hashCode() : 0;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (isInStock ? 1 : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + (test != null ? test.hashCode() : 0);
+        return result;
     }
 }

@@ -18,9 +18,7 @@ public class SimpleReaderXml<T> implements ReaderXml<T> {
         try {
             XMLStreamReader streamReader = inputFactory.createXMLStreamReader(new FileReader(file));
             streamReader.nextTag();
-            while (!streamReader.getLocalName().equals("simpleShop")) {
-                streamReader.nextTag();
-            }
+
             JAXBContext context = JAXBContext.newInstance(futureClass);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             JAXBElement<T> jaxbElement = unmarshaller.unmarshal(streamReader, futureClass);
