@@ -15,7 +15,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.xml.bind.JAXBException;
 import java.io.BufferedReader;
@@ -29,7 +32,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class SimpleJsonConverterTest {
+ class SimpleJsonConverterTest {
     private static final String PATH_TEST_RESOURCES = "src/test/resources";
     private static final File CORRECT_FULL_SHOP_XML = new File(PATH_TEST_RESOURCES + "/shopWithCategories.xml");
     private static SimpleReaderXml<SimpleShop> readerXml = Mockito.mock(SimpleReaderXml.class);

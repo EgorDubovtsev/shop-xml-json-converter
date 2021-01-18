@@ -22,9 +22,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class SimpleReaderXmlTest {
+class SimpleReaderXmlTest {
     private static final String PATH_TEST_RESOURCES = "src/test/resources";
     private static final File FULL_SHOP_XML = new File(PATH_TEST_RESOURCES + "/shopWithCategories.xml");
+    private final File INCORRECT_SHOP_XML = new File(PATH_TEST_RESOURCES + "/incorrectSimpleShop.xml");
     private static SimpleShop simpleShopFull = new SimpleShop();
     private SimpleReaderXml<SimpleShop> simpleReaderXml = new SimpleReaderXml<>();
 
@@ -87,7 +88,6 @@ public class SimpleReaderXmlTest {
 
     @Nested
     class NegativeCases {
-        private final File INCORRECT_SHOP_XML = new File("src/test/resources/incorrectSimpleShop.xml");
 
         @Test
         @DisplayName("Сериализация некорректного xml файла")

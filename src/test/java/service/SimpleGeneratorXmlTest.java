@@ -78,7 +78,7 @@ class SimpleGeneratorXmlTest {
     @Test
     @DisplayName("Геренация файла из Shop без категорий")
     void thatXmlWillBeCorrectGeneratedWithoutCategories() throws IOException {
-        File xmlShopWithoutCategories = new File("src/test/resources/shopWithoutCategories.xml");
+        File xmlShopWithoutCategories = new File(PATH_TEST_RESOURCES + "/shopWithoutCategories.xml");
 
         try (
                 BufferedReader readerForGeneratedXml = new BufferedReader(new FileReader(FILE_FOR_XML_GENERATE_TESTING));
@@ -97,7 +97,7 @@ class SimpleGeneratorXmlTest {
     @Test
     @DisplayName("Генерация файла из Shop с категориями и подкатегориями")
     void thatXmlWillBeCorrectGeneratedWithCategoriesAndSubcategories() {
-        File xmlShopWithCategories = new File("src/test/resources/shopWithCategories.xml");
+        File xmlShopWithCategories = new File(PATH_TEST_RESOURCES + "/shopWithCategories.xml");
 
         try (
                 BufferedReader readerForGeneratedXml = new BufferedReader(new FileReader(FILE_FOR_XML_GENERATE_TESTING));

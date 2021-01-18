@@ -1,10 +1,7 @@
 package service;
 
 import com.converter.service.XmlValidator;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,7 +10,7 @@ import java.io.PrintStream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-public class XmlValidatorTest {
+class XmlValidatorTest {
     private static final String INVALID_XML_MESSAGE = "XML IS INVALID";
     private static final String VALID_XML_MESSAGE = "XML IS VALID";
     private static final String PATH_TEST_RESOURCES = "src/test/resources";
@@ -38,7 +35,8 @@ public class XmlValidatorTest {
     @Nested
     class PositiveCases {
         @Test
-        void thatIncorrectXmlFileWillBeDefine() {
+        @DisplayName("Определение корректного документа")
+        void thatCorrectXmlFileWillBeDefine() {
             xmlValidator.checkValidation(CORRECT_XML_FILE, XML_SCHEMA);
             assertThat(outContent.toString(), containsString(VALID_XML_MESSAGE));
         }
@@ -47,6 +45,7 @@ public class XmlValidatorTest {
     @Nested
     class NegativeCases {
         @Test
+        @DisplayName("Определение некорректного документа")
         void thatIncorrectXmlFileWillBeDefine() {
             xmlValidator.checkValidation(INCORRECT_XML_FILE, XML_SCHEMA);
             assertThat(outContent.toString(), containsString(INVALID_XML_MESSAGE));
